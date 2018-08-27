@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\InstagramHistory\InstagramHistory;
 use Illuminate\Routing\Controller;
 use App\Services\TweetHistory\TweetHistory;
+use Spatie\Valuestore\Valuestore;
 
 class DashboardController extends Controller
 {
@@ -18,6 +19,8 @@ class DashboardController extends Controller
             'initialTweets' => TweetHistory::all(),
 
             'initialInstagramPhotos' => InstagramHistory::all(),
+
+            'initialSockCount' => Valuestore::make(storage_path('app/socks.json'))->get('amount', 0),
 
             'usingNodeServer' => usingNodeServer(),
         ]);
