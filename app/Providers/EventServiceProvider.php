@@ -15,6 +15,9 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\Twitter\Mentioned::class => [
             \App\Services\TweetHistory\TweetHistory::class,
         ],
+        \App\Events\Instagram\PhotoFetched::class => [
+            \App\Services\InstagramHistory\InstagramHistory::class,
+        ],
     ];
 
     protected $subscribe = [

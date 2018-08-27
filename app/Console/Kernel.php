@@ -22,6 +22,9 @@ class Kernel extends ConsoleKernel
         \App\Console\Components\Tasks\FetchTasks::class,
         \App\Console\Components\Twitter\ListenForMentions::class,
         \App\Console\Components\Twitter\SendFakeTweet::class,
+        \App\Console\Components\Socks\SetSockCount::class,
+        \App\Console\Components\Socks\IncrementSockCount::class,
+        \App\Console\Components\Instagram\FetchPhotos::class,
         UpdateDashboard::class,
     ];
 

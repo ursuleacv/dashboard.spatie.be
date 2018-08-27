@@ -22,6 +22,9 @@ class ListenForMentions extends Command
                 'spatie.be',
                 '@spatie_be',
                 'github.com/spatie',
+                '#laraconeu',
+                '#laracon',
+                '@laraconeu',
             ], function (array $tweetProperties) {
                 event(new Mentioned($tweetProperties));
             })

@@ -25,23 +25,15 @@ export function formatDuration(start) {
 export function relativeDate(value) {
     const date = moment(value);
 
-    if (moment().isSame(date, 'd')) {
-        return 'Today';
-    }
-
     if (
         moment()
             .add(1, 'day')
             .isSame(date, 'd')
     ) {
-        return 'Tomorrow';
+        return 'Tomorrow at ' + date.format('H:mm');
     }
 
-    if (date.isBetween(moment().add(1, 'day'), moment().add(8, 'days'), 'day')) {
-        return date.format('dddd');
-    }
-
-    return 'In ' + date.toNow(true);
+    return date.format('H:mm') + ' (in ' + date.toNow(true) + ')';
 }
 
 export function relativeDateTime(value) {

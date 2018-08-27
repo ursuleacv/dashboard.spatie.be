@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\InstagramHistory\InstagramHistory;
 use Illuminate\Routing\Controller;
 use App\Services\TweetHistory\TweetHistory;
 
@@ -15,6 +16,8 @@ class DashboardController extends Controller
             'pusherCluster' => config('broadcasting.connections.pusher.options.cluster'),
 
             'initialTweets' => TweetHistory::all(),
+
+            'initialInstagramPhotos' => InstagramHistory::all(),
 
             'usingNodeServer' => usingNodeServer(),
         ]);
