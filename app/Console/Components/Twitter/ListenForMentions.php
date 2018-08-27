@@ -18,6 +18,8 @@ class ListenForMentions extends Command
 
         app(TwitterStreamingApi::class)
             ->publicStream()
+            ->whenFrom([], function() {})
+            ->whenTweets(null, function() {})
             ->whenHears([
                 'spatie.be',
                 '@spatie_be',

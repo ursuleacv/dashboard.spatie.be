@@ -3,7 +3,7 @@
     grid-gap: .25em;
     justify-items: center;
     grid-template-rows: 1fr auto 1fr;
-    grid-template-areas: 
+    grid-template-areas:
             "empty"
             "content"
             "timezone";
@@ -18,7 +18,7 @@
 
 .time-weather__time {
     display: block;
-    color: var(--yellow);
+    color: var(--gray-darkest);
     letter-spacing: 0.05em;
     font-weight: var(--font-weight-light);
     font-size: var(--font-size-l);
@@ -26,13 +26,13 @@
 }
 
 .time-weather__date {
-    color: var(--gray-light);
+    color: var(--red);
     text-transform: uppercase;
     font-size: var(--font-size-xs);
 }
 
 .time-weather__weather {
-    color: var(--gray-light);
+    color: var(--gray-dark);
     font-size: var(--font-size-m);
 }
 
@@ -46,7 +46,7 @@
 
 .time-weather__time-zone {
     align-self: end;
-    color: var(--yellow);
+    color: var(--gray-dark);
     text-transform: uppercase;
     font-size: var(--font-size-xs);
     grid-area: timezone;

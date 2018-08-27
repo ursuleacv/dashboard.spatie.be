@@ -38,10 +38,11 @@
     --gray-lighter: #cdcdda;
     --gray-light: #afb3bd;
     --gray: #ababbb;
-    --gray-dark: #53575e;
+    --gray-dark: #757581;
     --gray-darker: #23272f;
     --gray-darkest: #1a1e25;
-    --color: #fff;
-    --dashboard-background-color: var(--gray-darkest);
-    --tile-background-color: var(--gray-darker);
+    --white: #fff;
+    --color: #000;
+    --dashboard-background-color: var(--gray-lightest);
+    --tile-background-color: var(--white);
 }

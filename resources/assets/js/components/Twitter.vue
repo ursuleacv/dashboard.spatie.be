@@ -1,34 +1,34 @@
 <template>
     <tile :position="position" modifiers="overflow transparent">
-        <section class="tweets">
-            <div class="tweet" v-for="tweet in onDisplay">
-                <div class="tweet__header">
-                    <div class="tweet__avatar"
+        <section class="feed">
+            <div class="feed-item" v-for="tweet in onDisplay">
+                <div class="feed-item__header">
+                    <div class="feed-item__avatar"
                     :style="'background-image: url('+ tweet.authorAvatar +')'"></div>
-                    <div class="tweet__user">
-                        <div class="tweet__user__name h-ellipsis" v-html="tweet.authorName"></div>
-                        <div class="tweet__user__handle h-ellipsis">
+                    <div class="feed-item__user">
+                        <div class="feed-item__user__name h-ellipsis" v-html="tweet.authorName"></div>
+                        <div class="feed-item__user__handle h-ellipsis">
                             {{ tweet.authorScreenName }}
                         </div>
                     </div>
                 </div>
-                <div :class="addClassModifiers('tweet__body', tweet.displayClass)"
+                <div :class="addClassModifiers('feed-item__body', tweet.displayClass)"
                 v-html="tweet.html"></div>
-                <div class="tweet__meta">
+                <div class="feed-item__meta">
                     <relative-date :moment="tweet.date"></relative-date>
-                    <span v-if="tweet.hasQuote" class="tweet__user__handle h-ellipsis">
+                    <span v-if="tweet.hasQuote" class="feed-item__user__handle h-ellipsis">
                         In reply to {{ tweet.quote.authorScreenName }}
                     </span>
                 </div>
-                <div v-if="tweet.image" class="tweet__attachment">
-                    <img class="tweet__attachment__image" :src="tweet.image"/>
+                <div v-if="tweet.image" class="feed-item__attachment">
+                    <img class="feed-item__attachment__image" :src="tweet.image"/>
                 </div>
-                <div v-if="tweet.hasQuote" class="tweet--quoted">
-                    <div class="tweet__body tweet__body--small" v-html="tweet.quote.html"></div>
+                <div v-if="tweet.hasQuote" class="feed-item--quoted">
+                    <div class="feed-item__body feed-item__body--small" v-html="tweet.quote.html"></div>
                 </div>
             </div>
         </section>
-        <div class="tweets__icon h-background-icon" v-if="!onDisplay.length">
+        <div class="feed__icon h-background-icon" v-if="!onDisplay.length">
         </div>
     </tile>
 </template>

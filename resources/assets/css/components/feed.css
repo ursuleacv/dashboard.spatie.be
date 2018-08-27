@@ -1,47 +1,55 @@
-.tweets {
+.feed {
     margin: calc(var(--grid-padding) * -1);
 }
 
-.tweets__icon {
+.feed__icon {
     background-image: url('/images/svg/twitter.svg');
 }
 
-.tweet {
+.feed-item {
     margin-bottom: var(--grid-gap);
     padding: var(--grid-gap);
     border-radius: 0.25vw;
-    background-color: var(--gray-darker);
+    background-color: var(--white);
     word-break: break-word;
 }
 
-.tweet--quoted {
+.feed-item--instagram {
+    margin-bottom: var(--grid-gap);
+    padding: 0;
+    border-radius: 0.25vw;
+    background-color: var(--white);
+    word-break: break-word;
+}
+
+.feed-item--quoted {
     margin-top: var(--grid-gap);
     padding: var(--grid-gap) 0;
     border-top: dotted 2px rgba(255, 255, 255, 0.15);
 }
 
-.tweet__header {
+.feed-item__header {
     display: flex;
     align-items: center;
     margin-bottom: 0.5em;
 }
 
-.tweet__user {
+.feed-item__user {
     min-width: 0;
 }
 
-.tweet__user__handle {
-    color: var(--gray-light);
+.feed-item__user__handle {
+    color: var(--gray-dark);
     font-size: var(--font-size-xxs);
 }
 
-.tweet__user__name {
+.feed-item__user__name {
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-xxs);
     filter: grayscale(1);
 }
 
-.tweet__avatar {
+.feed-item__avatar {
     display: block;
     flex-grow: 0;
     flex-shrink: 0;
@@ -54,41 +62,51 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 
-.tweet__body--default {
+.feed-item__body--default {
     font-size: var(--font-size-s);
 }
 
-.tweet__body--small {
+.feed-item__body--small {
     font-size: var(--font-size-xxs);
 }
 
-.tweet__body--medium {
+.feed-item__body--medium {
     font-size: var(--font-size);
 }
 
-.tweet__body--large {
+.feed-item__body--large {
     font-size: var(--font-size-m);
 }
 
-.tweet__body__handle {
+.feed-item__body__handle {
     font-weight: var(--font-weight-black);
 }
 
-.tweet__body__hashtag {
-    color: var(--gray-light);
+.feed-item__body__hashtag {
+    color: var(--gray-dark);
 }
 
-.tweet__attachment {
+.feed-item__body--instagram {
+    padding: .75em var(--grid-gap);
+    font-size: var(--font-size-xxs);
+    color: var(--gray-dark);
+}
+
+.feed-item__attachment {
     overflow: hidden;
     margin-top: var(--grid-gap);
     text-align: center;
     opacity: 0.75;
 }
 
-.tweet__attachment__image {
+.feed-item__attachment--instagram {
+    border: solid 4px var(--white);
+}
+
+.feed-item__attachment__image {
     max-width: 100%;
     max-height: 15vh;
     border-radius: 0.25vw;
@@ -96,8 +114,15 @@
     vertical-align: middle;
 }
 
-.tweet__meta {
+.feed-item__attachment__image--instagram {
+    max-width: 100%;
+    max-height: auto;
+    border-radius: 0.15vw 0.15vw 0 0;
+    vertical-align: middle;
+}
+
+.feed-item__meta {
     margin-top: 0.5vw;
-    color: var(--gray-light);
+    color: var(--gray-dark);
     font-size: var(--font-size-xxs);
 }

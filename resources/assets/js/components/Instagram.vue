@@ -1,9 +1,13 @@
 <template>
     <tile :position="position" modifiers="overflow transparent">
-        <section>
-            <div v-for="photo in photos">
-                <img :src="photo.image_url" style="width: 100%" :alt="photo.description">
-                {{ photo.description }}
+         <section class="feed">
+            <div class="feed-item--instagram" v-for="photo in photos">
+                <div class="feed-item__attachment--instagram">
+                    <img class="feed-item__attachment__image--instagram" :src="photo.image_url" :alt="photo.description"/>
+                </div>
+                <div class="feed-item__body--instagram ">
+                    {{ photo.description }}
+                </div>
             </div>
         </section>
     </tile>

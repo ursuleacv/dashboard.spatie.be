@@ -3,12 +3,16 @@
     padding: var(--grid-padding);
     border-radius: 0.25vw;
     background-color: var(--tile-background-color);
-    color: white;
-    text-shadow: 1px 1px 1px var(--tile-background-color);
+    color: var(--color);
 
     h1 {
         color: var(--gray-light);
     }
+}
+
+.tile--overflow-shown {
+    overflow: visible;
+    z-index: 100;
 }
 
 .tile--overflow:after {
