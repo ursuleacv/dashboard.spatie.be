@@ -44,5 +44,6 @@
     --white: #fff;
     --color: #000;
     --dashboard-background-color: var(--gray-lightest);
+    --tile-background-color-transparent: rgba(237, 237, 245, 0);
     --tile-background-color: var(--white);
 }

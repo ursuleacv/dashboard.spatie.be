@@ -90,7 +90,7 @@
 }
 
 .feed-item__body--instagram {
-    padding: .75em var(--grid-gap);
+    padding: .5em var(--grid-gap) .75em;
     font-size: var(--font-size-xxs);
     color: var(--gray-dark);
 }
@@ -103,7 +103,7 @@
 }
 
 .feed-item__attachment--instagram {
-    border: solid 4px var(--white);
+    border: solid .5vw var(--white);
 }
 
 .feed-item__attachment__image {

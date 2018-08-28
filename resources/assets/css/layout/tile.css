@@ -4,15 +4,11 @@
     border-radius: 0.25vw;
     background-color: var(--tile-background-color);
     color: var(--color);
+    text-shadow: 1px 1px 1px var(--tile-background-color);
 
     h1 {
         color: var(--gray-light);
     }
-}
-
-.tile--overflow-shown {
-    overflow: visible;
-    z-index: 100;
 }
 
 .tile--overflow:after {
@@ -24,6 +20,10 @@
     height: 1px;
     box-shadow: 0 0 0.5em 0.5em var(--tile-background-color);
     content: '';
+}
+
+.tile--overflow-visible {
+    overflow: visible;
 }
 
 .tile--above {
@@ -48,8 +48,11 @@
 
 .tile--transparent {
     --tile-background-color: var(--dashboard-background-color);
+}
 
-    border: solid 1px var(--tile-background-color);
+.tile--feed {
+    --tile-background-color: var(--dashboard-background-color);
+    border-bottom: solid 2px var(--grey);
 }
 
 .tile--yellow {
