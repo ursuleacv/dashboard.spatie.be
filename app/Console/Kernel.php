@@ -30,6 +30,7 @@ class Kernel extends ConsoleKernel
 
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('dashboard:fetch-instagram-photos')->everyMinute();
         $schedule->command('dashboard:fetch-calendar-events')->everyMinute();
         $schedule->command('dashboard:fetch-current-track')->everyMinute();
         $schedule->command('dashboard:send-heartbeat')->everyMinute();
