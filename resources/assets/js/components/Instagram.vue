@@ -3,7 +3,7 @@
          <section class="feed">
             <div class="feed-item--instagram" v-for="photo in photos">
                 <div class="feed-item__attachment--instagram">
-                    <img class="feed-item__attachment__image--instagram" :src="photo.image_url" :alt="photo.description"/>
+                    <img v-if="photo.image_url" class="feed-item__attachment__image--instagram" :src="photo.image_url" :alt="photo.description"/>
                 </div>
                 <div class="feed-item__body--instagram ">
                     {{ photo.description }}
@@ -40,7 +40,7 @@ export default {
     methods: {
         getEventHandlers() {
             return {
-                'Twitter.Mentioned': response => {
+                'Instagram.PhotoFetched': response => {
                     this.photos.push(response.photo);
                 },
             };

@@ -20,11 +20,10 @@ class FetchPhotos extends Command
 
        $instagram
             ->getAll()
-           // Always send _all_ photos (temp fix)
-//            ->filter(function (array $photo) use ($lastBroadcastedId) {
-//                return $photo['id'] > $lastBroadcastedId;
-//            })
-            ->sortBy('id')
+            ->filter(function (array $photo) use ($lastBroadcastedId) {
+                return $photo['id'] > $lastBroadcastedId;
+            })
+            ->sortByDesc('id')
             ->each(function (array $photo) {
                 event(new PhotoFetched($photo));
             });

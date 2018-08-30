@@ -3,7 +3,6 @@
 namespace App\Events\Instagram;
 
 use App\Events\DashboardEvent;
-use Illuminate\Support\Collection;
 
 class PhotoFetched extends DashboardEvent
 {
