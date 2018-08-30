@@ -4,7 +4,7 @@
             <h1>GitHub</h1>
             <ul>
                 <li class="statistic">
-                    <span class="statistic__stars">Stars</span>
+                    <span class="statistic__stars h-icon"></span>
                     <span class="statistic__count">{{ formatNumber(stars) }}</span>
                 </li>
                 <li class="statistic">
