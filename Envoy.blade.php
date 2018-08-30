@@ -12,9 +12,9 @@ $deploymentId = 'Deployment of ' . $siteName . ':' . $pathOnServer . ' by ' . ge
 echo 'start deploying on {{ $server }}. Path: {{ $pathOnServer }}'
 @endtask
 
-@task('checkout master branch', ['on' => 'localhost'])
-echo 'checking out the master branch'
-git checkout master
+@task('checkout laracon-2019 branch', ['on' => 'localhost'])
+echo 'checking out the laracon-2019 branch'
+git checkout laracon-2019
 @endtask
 
 @task('bring app down', ['on' => 'web'])
@@ -25,7 +25,7 @@ php artisan down
 
 @task('pull changes on server', ['on' => 'web'])
 cd '{{ $pathOnServer }}'
-git pull origin master
+git pull origin laracon-2019
 @endtask
 
 @task('run composer install', ['on' => 'web'])
@@ -69,12 +69,12 @@ ssh pi 'sudo reboot'
 
 @task('deployOnlyCode',['on' => 'web'])
 cd {{ $pathOnServer }}
-git pull origin master
+git pull origin laracon-2019
 @endtask
 
 @macro('deploy')
 display start message
-checkout master branch
+checkout laracon-2019 branch
 bring app down
 pull changes on server
 run composer install
