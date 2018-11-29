@@ -59,7 +59,7 @@ export default {
         },
         maxTrains: {
             type: Number,
-            default: 5
+            default: 5,
         },
     },
 

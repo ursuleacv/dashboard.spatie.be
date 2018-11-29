@@ -25,7 +25,7 @@ class Buienradar
                     'rain' => $forecast->precipitation,
                 ];
             })
-            ->take(12)
+            ->take(13)
             ->toArray();
     }
 }
