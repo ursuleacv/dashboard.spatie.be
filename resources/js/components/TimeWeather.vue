@@ -29,20 +29,6 @@
                     :d="svgPath(rainForecastPoints)"
                     fill="url(#forecastGradient)"
                 />
-                <g mask="url(#myMask)">
-                    <line
-                        v-for="(point, i) in rainForecastPoints"
-                        v-if="i % 3 === 0"
-                        :key="i"
-                        :x1="point[0]"
-                        :y1="0"
-                        :x2="point[0]"
-                        :y2="100"
-                        stroke="white"
-                        stroke-width="1"
-                        vector-effect="non-scaling-stroke"
-                    />
-                </g>
             </svg>
         </div>
         <div
