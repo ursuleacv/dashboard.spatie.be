@@ -22,11 +22,11 @@
                         />
                     </linearGradient>
                     <mask id="myMask">
-                        <path :d="svgPath(rainForecastPoints)" fill="white" />
+                        <path :d="svgCurve(rainForecastPoints)" fill="white" />
                     </mask>
                 </defs>
                 <path
-                    :d="svgPath(rainForecastPoints)"
+                    :d="svgCurve(rainForecastPoints)"
                     fill="url(#forecastGradient)"
                 />
             </svg>
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import { emoji } from '../helpers';
+import { emoji, svgCurve } from '../helpers';
 import echo from '../mixins/echo';
 import Tile from './atoms/Tile';
 import moment from 'moment-timezone';
@@ -130,6 +130,24 @@ export default {
 
         this.fetchWeather();
         setInterval(this.fetchWeather, 15 * 60 * 1000);
+
+        setTimeout(() => {
+            this.updateRainForecasts([
+                { time: '2018-11-29T10:10:00', rain: 1.0 },
+                { time: '2018-11-29T10:15:00', rain: 0.5 },
+                { time: '2018-11-29T10:20:00', rain: 3.0 },
+                { time: '2018-11-29T10:25:00', rain: 0.6 },
+                { time: '2018-11-29T10:30:00', rain: 0.7 },
+                { time: '2018-11-29T10:35:00', rain: 2.5 },
+                { time: '2018-11-29T10:40:00', rain: 0.2 },
+                { time: '2018-11-29T10:45:00', rain: 0.3 },
+                { time: '2018-11-29T10:50:00', rain: 0.7 },
+                { time: '2018-11-29T10:55:00', rain: 1.8 },
+                { time: '2018-11-29T11:00:00', rain: 0.1 },
+                { time: '2018-11-29T11:05:00', rain: 1.5 },
+                { time: '2018-11-29T11:10:00', rain: 1.2 },
+            ]);
+        }, 2000);
     },
 
     computed: {
@@ -148,6 +166,7 @@ export default {
 
     methods: {
         emoji,
+        svgCurve,
 
         refreshTime() {
             this.date = moment()
@@ -164,54 +183,6 @@ export default {
                     this.rainForecasts = response.forecasts;
                 },
             };
-        },
-
-        svgPath(points) {
-            const line = (pointA, pointB) => {
-                const lengthX = pointB[0] - pointA[0];
-                const lengthY = pointB[1] - pointA[1];
-                return {
-                    length: Math.sqrt(Math.pow(lengthX, 2) + Math.pow(lengthY, 2)),
-                    angle: Math.atan2(lengthY, lengthX),
-                };
-            };
-
-            const controlPoint = (current, previous, next, reverse) => {
-                // When 'current' is the first or last point of the array
-                // 'previous' or 'next' don't exist.
-                // Replace with 'current'
-                const p = previous || current;
-                const n = next || current;
-                // The smoothing ratio
-                const smoothing = 0.2;
-                // Properties of the opposed-line
-                const o = line(p, n);
-                // If is end-control-point, add PI to the angle to go backward
-                const angle = o.angle + (reverse ? Math.PI : 0);
-                const length = o.length * smoothing;
-                // The control point position is relative to the current point
-                const x = current[0] + Math.cos(angle) * length;
-                const y = current[1] + Math.sin(angle) * length;
-                return [x, y];
-            };
-
-            const command = (point, i, a) => {
-                // start control point
-                const [cpsX, cpsY] = controlPoint(a[i - 1], a[i - 2], point);
-                // end control point
-                const [cpeX, cpeY] = controlPoint(point, a[i - 1], a[i + 1], true);
-                return `C ${cpsX},${cpsY} ${cpeX},${cpeY} ${point[0]},${point[1]}`;
-            };
-
-            // const command = point => `L ${point[0]} ${point[1]}`;
-
-            return (
-                points.reduce(
-                    (acc, point, i, a) =>
-                        i === 0 ? `M ${point[0]},${point[1]}` : `${acc} ${command(point, i, a)}`,
-                    ''
-                ) + ' L 100,100 L 0,100 Z'
-            );
         },
 
         async fetchWeather() {
@@ -300,6 +271,35 @@ export default {
 
             this.weather.temperature = conditions.temp;
             this.weather.icon = emoji(icon);
+        },
+
+        updateRainForecasts(rainForecasts) {
+            const animationStart = performance.now();
+
+            const initialRainForecastValues = this.rainForecasts.map(rainForecast => {
+                return rainForecast.rain;
+            });
+
+            const animate = () => {
+                const position = (performance.now() - animationStart) / 1000;
+
+                if (position < 1) {
+                    this.rainForecasts = rainForecasts.map((rainForecast, i) => {
+                        const initialValue = initialRainForecastValues[i];
+
+                        return {
+                            time: rainForecast.time,
+                            rain: initialValue + (rainForecast.rain - initialValue) * (position * (2 - position)),
+                        }
+                    });
+
+                    requestAnimationFrame(animate);
+                } else {
+                    this.rainForecasts = rainForecasts;
+                }
+            }
+
+            requestAnimationFrame(animate);
         },
     },
 };

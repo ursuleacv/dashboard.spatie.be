@@ -40,12 +40,12 @@ new Vue({
             wsPath: window.dashboard.clientConnectionPath,
             wsPort: window.dashboard.wsPort,
             disableStats: true,
-        }
+        };
 
         if (window.dashboard.environment === 'local') {
             config.wsPort = 6001;
         }
 
-        this.echo = new Echo(config);
+        // this.echo = new Echo(config);
     },
 });
