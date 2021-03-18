@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Tiles\Twitter\Commands\ListenForHashTagsCommand;
 use Illuminate\Console\Command;
 use Spatie\VeloTile\FetchVeloStationsCommand;
 use Spatie\CalendarTile\FetchCalendarEventsCommand;
@@ -11,6 +12,7 @@ use App\Tiles\Statistics\Commands\FetchGitHubTotalsCommand;
 use App\Tiles\TeamMember\Commands\FetchCurrentTracksCommand;
 use App\Tiles\Statistics\Commands\FetchPackagistTotalsCommand;
 use Spatie\TimeWeatherTile\Commands\FetchOpenWeatherMapDataCommand;
+use VineVax\UptimeRobotTile\Commands\FetchUptimeRobotDataCommand;
 
 class UpdateDashboardCommand extends Command
 {
@@ -20,13 +22,14 @@ class UpdateDashboardCommand extends Command
 
     public function handle()
     {
-        $this->call(FetchBelgianTrainsCommand::class);
+//        $this->call(FetchBelgianTrainsCommand::class);
+//        $this->call(FetchSlackStatusCommand::class);
+//        $this->call(FetchGitHubTotalsCommand::class);
         $this->call(FetchCurrentTracksCommand::class);
         $this->call(FetchVeloStationsCommand::class);
-        $this->call(FetchSlackStatusCommand::class);
         $this->call(FetchCalendarEventsCommand::class);
-        //$this->call(FetchGitHubTotalsCommand::class);
         $this->call(FetchPackagistTotalsCommand::class);
         $this->call(FetchOpenWeatherMapDataCommand::class);
+        $this->call(FetchUptimeRobotDataCommand::class);
     }
 }

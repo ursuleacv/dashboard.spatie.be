@@ -16,8 +16,8 @@ return [
      * to determine whether the sun is up or down
      */
     'auto_theme_location' => [
-        'lat' => 51.260197,
-        'lng' => 4.402771,
+        'lat' => 45.612150,
+        'lng' => -73.531860,
     ],
 
     'tiles' => [
@@ -25,7 +25,7 @@ return [
             'ids' => [
                 env('GOOGLE_CALENDAR_ID'),
             ],
-            'refresh_interval_in_seconds' => 3,
+            'refresh_interval_in_seconds' => 60,
         ],
 
         'twitter' => [
@@ -36,12 +36,16 @@ return [
                     'access_token' => env('TWITTER_ACCESS_TOKEN'),
                     'access_token_secret' => env('TWITTER_ACCESS_TOKEN_SECRET'),
                     'listen_for' => [
-                        'spatie.be',
-                        '@spatie_be',
-                        'github.com/spatie',
+                        'kangaroorewards.com',
+                        '@KangarooRewards',
+                        'github.com/kangaroorewards',
+//                        'laravel',
+//                        '#laravel',
+//                        '#DaylightSavingTime'
                     ],
                 ],
             ],
+            'refresh_interval_in_seconds' => 5,
         ],
 
         'velo' => [
@@ -73,9 +77,15 @@ return [
 
         'time_weather' => [
             'open_weather_map_key' => env('OPEN_WEATHER_MAP_KEY'),
-            'open_weather_map_city' => 'Antwerp',
+            'open_weather_map_city' => 'Montreal',
             'buienradar_latitude' => env('BUIENRADAR_LATITUDE'),
             'buienradar_longitude' => env('BUIENRADAR_LONGITUDE'),
         ],
+
+        /* Monitors should be an array with ids of your monitors you want to display */
+        'uptimerobot' => [
+            'key' => env('UPTIMEROBOT_KEY'),
+            'monitors' => []
+        ]
     ],
 ];
