@@ -2,10 +2,10 @@
 
 namespace Tests\Feature;
 
+use Tests\TestCase;
+use Laravel\Jetstream\Jetstream;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Laravel\Jetstream\Jetstream;
-use Tests\TestCase;
 
 class RegistrationTest extends TestCase
 {

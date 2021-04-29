@@ -2,8 +2,8 @@
 
 namespace App\Tiles\Twitter\Commands;
 
-use Illuminate\Console\Command;
 use TwitterStreamingApi;
+use Illuminate\Console\Command;
 
 class ListenForHashTagsCommand extends Command
 {

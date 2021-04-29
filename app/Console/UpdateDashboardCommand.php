@@ -2,7 +2,6 @@
 
 namespace App\Console;
 
-use App\Tiles\Twitter\Commands\ListenForHashTagsCommand;
 use Illuminate\Console\Command;
 use Spatie\VeloTile\FetchVeloStationsCommand;
 use Spatie\CalendarTile\FetchCalendarEventsCommand;
@@ -11,8 +10,8 @@ use App\Tiles\TeamMember\Commands\FetchSlackStatusCommand;
 use App\Tiles\Statistics\Commands\FetchGitHubTotalsCommand;
 use App\Tiles\TeamMember\Commands\FetchCurrentTracksCommand;
 use App\Tiles\Statistics\Commands\FetchPackagistTotalsCommand;
-use Spatie\TimeWeatherTile\Commands\FetchOpenWeatherMapDataCommand;
 use VineVax\UptimeRobotTile\Commands\FetchUptimeRobotDataCommand;
+use Spatie\TimeWeatherTile\Commands\FetchOpenWeatherMapDataCommand;
 
 class UpdateDashboardCommand extends Command
 {
