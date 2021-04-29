@@ -54,3 +54,11 @@ For more details on the project, read our article about the [setup and component
 ## License
 
 This project and the Laravel framework are open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+## 
+
+http://dashboard.spatie.be.test/
+
+npm run development
+
+php artisan dashboard:update
